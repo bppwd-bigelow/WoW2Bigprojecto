@@ -6,7 +6,9 @@ import javafx.scene.paint.Color;
 
 
 public class Exit extends GameScreen{
+    int should;
     public Exit(){
+      
         
     }
      protected void blue(GraphicsContext gc) { 
@@ -15,6 +17,9 @@ public class Exit extends GameScreen{
     }
          public int shouldSwitch(){
        return 1;
+    }
+                 public void resetSwitch(int n) {
+        should=n;
     }
  
 }

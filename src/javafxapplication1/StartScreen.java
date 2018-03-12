@@ -16,7 +16,7 @@ public class StartScreen extends GameScreen {
     boolean button_switch=false;
       int x1,x2,x3,y1,y2,y3,h1,h2,h3,w1,w2,w3;
       //should is a variable that will change the screen depending on what buton you pick. the number 5 is not used so i made that its defult value
-      int should = 5;
+      int should=0;
       double mouse_x,mouse_y;
        public StartScreen(){
           
@@ -47,19 +47,19 @@ public class StartScreen extends GameScreen {
         //seeing if the mouse x and y is within the first button
             if ((mouse_x > x1) && (mouse_x<x1+200)||(mouse_x > x1) && (mouse_x<x1+200)) {   
                 if((mouse_y>y1)&&(mouse_y<y1+100)||(mouse_y>y1+100)&&(mouse_y<y1+100))  {
-                    should=0;
+                    should=1;
                 }
             }
             //seeing if the mouse x and y is within the second button
              if ((mouse_x > x2) && (mouse_x<x2+200)||(mouse_x > x2) && (mouse_x<x2+200)) {   
                 if((mouse_y>y2)&&(mouse_y<y2+100)||(mouse_y>y2+100)&&(mouse_y<y2+100))  {
-                   should=1;
+                   should=2;
                 }
             }
              //seeing if the mouse x and y is within the third button
               if ((mouse_x > x3) && (mouse_x<x3+200)||(mouse_x > x3) && (mouse_x<x3+200)) {   
                 if((mouse_y>y3)&&(mouse_y<y3+100)||(mouse_y>y3+100)&&(mouse_y<y3+100))  {
-                   should=2;
+                   should=3;
                 }
             }
         }
@@ -95,5 +95,11 @@ public class StartScreen extends GameScreen {
             //this should return true if the button is clicked 
             return should;
         }
+       
+    @Override
+        public void resetSwitch() {
+            //this is reseting everytime you go on a new screen
+        should=0;
+    }
 
 }

@@ -6,6 +6,7 @@
 package javafxapplication1;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontSmoothingType;
@@ -16,14 +17,26 @@ import javafx.scene.text.FontWeight;
  * @author pwd11
  */
 public class Description extends GameScreen{
-
+    double mouse_x,mouse_y;
+    int should=5;
     public Description() {
+         
     }
-
-    @Override
-    public int shouldSwitch() {
-        return 1;
-    }
+   
+    
+   @Override
+       public void buttons(MouseEvent event){
+           //getting the x and y and seeing if its clicked on the button
+        mouse_x= event.getX();
+        mouse_y= event.getY();
+        //seeing if the mouse x and y is within the first button
+            if ((mouse_x > 1350) && (mouse_x<1350+200)||(mouse_x > 1350) && (mouse_x<1350+200)) {   
+                if((mouse_y>700)&&(mouse_y<700+100)||(mouse_y>700+100)&&(mouse_y<700+100))  {
+                   should=0;  
+                }
+            }
+       }
+    
     @Override
     public void draw(GraphicsContext gc){
         //Background color
@@ -38,10 +51,12 @@ public class Description extends GameScreen{
         //background to banner
         gc.setFill(Color.DARKBLUE);  
         gc.fillRect(1000, 100, 900, 800);
-         gc.setFill(Color.SILVER);  
-            gc.fillRect(1350, 700, 200, 100);
+        //this is a button
+        gc.setFill(Color.SILVER);  
+        gc.fillRect(1350, 700, 200, 100);
         //drawing all the text to teh screen
         gc.setFill(Color.BISQUE);
+        // this will set the font and the size
         gc.setFont(Font.font("Verdana", FontWeight.BOLD, 30));
         gc.fillText("When the game is generated, you will start off with a castle and a worker. These workers  will be able to build", 1050, 150,800);
         gc.fillText(" buildings to expand your kingdom. Buildings will have different Buildings will have different functions depending ", 1050,200 ,800);
@@ -54,5 +69,13 @@ public class Description extends GameScreen{
         gc.fillText("won't give their gold up that easy. Goblins won't give their gold up that easy. Upgrades will be purchasable for a price to strengthen ", 1050, 550,800);
         gc.fillText("your armies and get more soldiers. To win the game you will have to defeat the orcs that inhabit the lands you plan to make a legacy upon. ", 1050, 600,800); 
     }
-    
+     @Override
+    public int shouldSwitch() {
+        return should;
+    }
+    @Override
+        public void resetSwitch() {
+            //reseting each time you go on the screen
+        should=5;
+    }
 }

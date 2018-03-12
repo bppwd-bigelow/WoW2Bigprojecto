@@ -19,8 +19,8 @@ public abstract class GameScreen  {
     ArrayList<GameObject> objects;
     
     public GameScreen(){
+       
         objects=new ArrayList<GameObject>();
-        
     }     
     public void buttons(MouseEvent event){ 
     }
@@ -42,5 +42,10 @@ public abstract class GameScreen  {
         }
     } 
     public abstract int shouldSwitch();
-    
+
+
+   
+    protected void resetSwitch() {
+      
+    }
 }

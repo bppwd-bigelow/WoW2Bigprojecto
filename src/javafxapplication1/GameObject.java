@@ -12,14 +12,12 @@ public GameObject(int xx, int yy, int hh,int ww){
     y=yy;
     w=ww;
     h=hh;
-
 }
     protected abstract void update(); 
     
     protected void draw(GraphicsContext gc) { 
         gc.setFill(Color.RED);  
         gc.fillRect(x, y, w, h);
-        
     } 
  public int return_x(){
     //returning to see if it is going to collide
@@ -28,7 +26,5 @@ public GameObject(int xx, int yy, int hh,int ww){
     public int return_y(){
       //returning to see if it is going to collide  
     return y;
-    }    
-    
-      
+    }       
 }

@@ -27,13 +27,9 @@ LevelOne lo;
 Description dd;
 Exit ex;
 int count;
-int screen;
-int size;
     public Game(GameFramework gf) { 
        //this is initializing all the variables 
         count=0;
-        screen = 1920;
-        size = 1080;
         lo=new LevelOne();
         ss=new StartScreen();
         ex=new Exit();
@@ -57,29 +53,52 @@ int size;
             activescreen.buttons(event);
           
         }
+                if(activescreen==dd){
+            //passing the x and y of the mouse 
+            activescreen.buttons(event);
+          
+        }
     }    
     protected void mouseReleased(MouseEvent event) { 
     } 
     protected void update(float dt) { 
+        
             //this is checking if  the first button on the screen was pushed
-         if ( activescreen.shouldSwitch()==0 && activescreen==ss){
+         if ( activescreen.shouldSwitch()==1 && activescreen==ss){
+             System.out.println(activescreen);
+             //this is reseting the switch so you can go back and forth on screens
+            activescreen.resetSwitch();
             activescreen = lo; 
         }
          //this is checking if the second button on the screen was pushed 
-          if (activescreen.shouldSwitch()==1 && activescreen==ss){
+          if (activescreen.shouldSwitch()==2 && activescreen==ss){
+               System.out.println(activescreen);
+               //this is reseting the switch so you can go back and forth on screens
+               activescreen.resetSwitch();
             activescreen = dd; 
         }
           //this will change the game screen when you die to the ending screen
-         if (activescreen.shouldSwitch()==2 && activescreen==lo){
+         if (activescreen.shouldSwitch()==3 && activescreen==lo){
+              System.out.println(activescreen);
+              //this is reseting the switch so you can go back and forth on screens
+              activescreen.resetSwitch();
             activescreen = ex; 
         }
-          if (activescreen.shouldSwitch()==2 && activescreen==ss){
+          if (activescreen.shouldSwitch()==3 && activescreen==ss){
+               System.out.println(activescreen);
+               activescreen.resetSwitch();
             System.exit(0);
+        }
+          // description to start screen
+          if (activescreen.shouldSwitch()==0 && activescreen==dd){
+               System.out.println(activescreen);
+               //this is reseting the switch so you can go back and forth on screens
+               activescreen.resetSwitch();
+            activescreen = ss; 
         }
          //updating the activescreen
         activescreen.update();
     } 
-
 
  
 
